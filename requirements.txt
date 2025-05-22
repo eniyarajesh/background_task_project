@@ -1,0 +1,7 @@
+fastapi[all]==0.109.0
+uvicorn[standard]==0.27.0
+celery[redis]==5.2.7
+redis==5.0.3
+flower==2.0.1
+pika
+python-dotenv
