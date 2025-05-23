@@ -1,0 +1,62 @@
+
+---
+
+### ✅ Updated `.gitignore`
+
+```gitignore
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pdb
+*.egg-info/
+.eggs/
+*.log
+
+# Virtual environment
+.venv/
+venv/
+ENV/
+env/
+
+# VS Code or other IDE settings
+.vscode/
+.idea/
+*.swp
+
+# Environment variables
+.env
+.env.*
+
+# Docker
+*.pid
+*.db
+*.sqlite3
+*.sock
+docker-compose.override.yml
+
+# macOS and system files
+.DS_Store
+Thumbs.db
+
+# Test & coverage files
+.coverage
+coverage.xml
+htmlcov/
+pytest_cache/
+.tox/
+.mypy_cache/
+.pytest_cache/
+
+# Build
+build/
+dist/
+*.egg
+*.egg-info/
+pip-wheel-metadata/
+
+# Streamlit temporary folders
+.streamlit/config.toml
+.streamlit/secrets.toml
