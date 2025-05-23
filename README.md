@@ -99,7 +99,6 @@ Get Task Status
         streamlit run streamlit_app.py
 
     3. Visit:
-
        📍 http://localhost:8501
 
 
