@@ -7,7 +7,6 @@ This project demonstrates how to build a **background task processing system** u
 - **Redis** (for result backend)
 - **RabbitMQ** (as message broker)
 - **Flower** (for task monitoring)
-- **Streamlit** (for frontend UI)
 - **Docker Compose** (for container orchestration)
 - **python-dotenv** (to manage environment variables)
 
@@ -18,7 +17,6 @@ This project demonstrates how to build a **background task processing system** u
 - Submit tasks to generate random numbers with delay
 - Track progress of tasks in real time
 - Monitor tasks with Flower UI
-- Interactive UI using Streamlit
 
 ---
 
@@ -29,20 +27,43 @@ This project demonstrates how to build a **background task processing system** u
 - Python 3.10+
 - Docker & Docker Compose
 
+--- 
+
+#### 📁 Project Structure
+
+<pre><code>
+.
+├── app
+│   ├── __init__.py
+│   ├── main.py
+│   ├── tasks.py
+│   └── celery_worker.py
+├── .env
+├── .gitignore
+├── Dockerfile
+├── docker-compose.yml
+├── requirements.txt
+└── README.md
+</code></pre>
+
+
 ---
+
 
 ### 🔧 Setup
 
-1. Clone the repository:
+#### 1. Clone the repository:
 
 ```bash
 git clone https://github.com/your-username/your-repo-name.git
 cd your-repo-name
+```
 
+---
 
+#### 2. Create a .env file in the root with the following contents:
 
-2. Create a .env file in the root with the following contents:
-
+```bash
 # RabbitMQ
 RABBITMQ_DEFAULT_USER=guest
 RABBITMQ_DEFAULT_PASS=guest
@@ -59,91 +80,71 @@ FASTAPI_COMMAND=uvicorn app.main:app --host 0.0.0.0 --port=8000 --reload
 # Celery
 CELERY_WORKER_COMMAND=sh -c "sleep 10 && celery -A app.celery_worker worker -Q default --loglevel=info"
 FLOWER_COMMAND=sh -c "sleep 10 && celery -A app.celery_worker flower --port=${FLOWER_PORT}"
+```
 
+---
 
-3. Start the application:
+#### 3. Start the application:
 
+```bash
 docker-compose up --build
+```
 
+---
 
-📫 API Usage
+#### 📫 API Usage
 
-Submit Task
-    POST /submit/?count=5
+##### Submit Task
 
-        Response:
-            {
-            "message": "Task submitted to generate 5 random numbers",
-            "task_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-            }
+**POST /submit/?count=5**
 
-Get Task Status
-    GET /result/{task_id}
+***Response:***
+```bash
+    {
+    "message": "Task submitted to generate 5 random numbers",
+    "task_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    }
+```
 
+##### Get Task Status
 
-🌼 Flower Monitoring UI
+**GET /result/{task_id}**
 
-    Access Flower at:
-    📍 http://localhost:5555
+---
 
+#### 🌼 Flower Monitoring UI
 
+**Access Flower at:**
 
-🎈 Run the Streamlit App
+```bash
+📍 http://localhost:5555
+```
 
-    This project includes a Streamlit frontend to visualize task progress interactively.
+---
 
-    1. Make sure your FastAPI backend is running (via Docker).
+#### 📦 Tech Stack
 
-    2. In a new terminal, run:
+- FastAPI
+- Celery
+- Redis
+- RabbitMQ
+- Docker + Compose
+- Flower
+- Python-dotenv
 
-        streamlit run streamlit_app.py
+---
 
-    3. Visit:
-       📍 http://localhost:8501
+#### ✅ To Do
 
+- Add authentication
+- Add input validation
+- Deploy to cloud (e.g., AWS, Render, Railway)
 
-📦 Tech Stack
+---
 
-    FastAPI
-    Celery
-    Redis
-    RabbitMQ
-    Docker + Compose
-    Flower
-    Streamlit
-    Python-dotenv
-
-
-📁 Project Structure
-
-.
-├── app
-│   ├── __init__.py
-│   ├── main.py
-│   ├── tasks.py
-│   └── celery_worker.py
-├── .env
-├── .gitignore
-├── Dockerfile
-├── docker-compose.yml
-├── requirements.txt
-├── streamlit_app.py
-└── README.md
-
-
-
-✅ To Do
-
-    Add authentication
-
-    Add input validation
-
-    Deploy to cloud (e.g., AWS, Render, Railway, Streamlit Cloud)
-
-
-📄 License
+#### 📄 License
 
     MIT License - free for personal and commercial use.
 
-    
+---
   
