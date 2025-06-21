@@ -7,6 +7,7 @@ This project demonstrates how to build a **background task processing system** u
 - **Redis** (for result backend)
 - **RabbitMQ** (as message broker)
 - **Flower** (for task monitoring)
+- **Streamlit** (for frontend UI)
 - **Docker Compose** (for container orchestration)
 - **python-dotenv** (to manage environment variables)
 
@@ -17,6 +18,7 @@ This project demonstrates how to build a **background task processing system** u
 - Submit tasks to generate random numbers with delay
 - Track progress of tasks in real time
 - Monitor tasks with Flower UI
+- Interactive UI using Streamlit
 
 ---
 
@@ -36,6 +38,7 @@ This project demonstrates how to build a **background task processing system** u
 ```bash
 git clone https://github.com/your-username/your-repo-name.git
 cd your-repo-name
+
 
 
 2. Create a .env file in the root with the following contents:
@@ -68,11 +71,11 @@ docker-compose up --build
 Submit Task
     POST /submit/?count=5
 
-    Response:
-        {
-        "message": "Task submitted to generate 5 random numbers",
-        "task_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-        }
+        Response:
+            {
+            "message": "Task submitted to generate 5 random numbers",
+            "task_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+            }
 
 Get Task Status
     GET /result/{task_id}
@@ -80,8 +83,23 @@ Get Task Status
 
 🌼 Flower Monitoring UI
 
-Access Flower at:
-📍 http://localhost:5555
+    Access Flower at:
+    📍 http://localhost:5555
+
+
+
+🎈 Run the Streamlit App
+
+    This project includes a Streamlit frontend to visualize task progress interactively.
+
+    1. Make sure your FastAPI backend is running (via Docker).
+
+    2. In a new terminal, run:
+
+        streamlit run streamlit_app.py
+
+    3. Visit:
+       📍 http://localhost:8501
 
 
 📦 Tech Stack
@@ -92,6 +110,7 @@ Access Flower at:
     RabbitMQ
     Docker + Compose
     Flower
+    Streamlit
     Python-dotenv
 
 
@@ -108,7 +127,9 @@ Access Flower at:
 ├── Dockerfile
 ├── docker-compose.yml
 ├── requirements.txt
+├── streamlit_app.py
 └── README.md
+
 
 
 ✅ To Do
@@ -117,7 +138,7 @@ Access Flower at:
 
     Add input validation
 
-    Deploy to cloud (e.g., AWS, Render, Railway)
+    Deploy to cloud (e.g., AWS, Render, Railway, Streamlit Cloud)
 
 
 📄 License

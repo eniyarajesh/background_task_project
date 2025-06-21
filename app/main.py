@@ -26,3 +26,4 @@ async def get_task_result(task_id: str):
         return {"task_id": task_id, "status": result.state, "error": str(result.result)}
     else:
         return {"task_id": task_id, "status": result.state}
+
